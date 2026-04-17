@@ -1,9 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -12,9 +12,11 @@ module.exports = {
           purple: "#950DB7",
           pink: "#FF00FF",
           orange: "#FF8C00",
+          yellow: "#F5b841",
+          orangeDark: "#CC7000",
         },
       },
     },
   },
   plugins: [],
-}
+};

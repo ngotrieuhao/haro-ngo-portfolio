@@ -15,7 +15,7 @@ const StaggeredText = ({ text }: { text: string }) => {
 
   return (
     <motion.div
-      className="flex items-center text-white bg-[#452701] px-4 py-1.5 rounded-lg shadow-inner absolute"
+      className="flex items-center text-white bg-amber-950 px-4 py-1.5 rounded-lg shadow-inner absolute"
       initial="hidden"
       animate="visible"
       exit="exit"
@@ -68,19 +68,20 @@ export const AutoRunTextHero: FC = () => {
   }, []);
 
   return (
-    <div className="absolute top-[60%] sm:top-[70%] left-[-20vw] w-[120vw] -rotate-3 bg-[#f5b841] overflow-hidden flex z-30 py-5 sm:py-7 shadow-[0_0_30px_rgba(245,184,65,0.4)] justify-center">
-      <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[#452701] font-bold text-lg sm:text-2xl lg:text-3xl tracking-wide max-w-7xl px-4 text-center">
-        <span>I am a Frontend Developer skilled in</span>
+    <section>
+      <div className="absolute top-[60%] sm:top-[70%] left-[-20vw] w-[120vw] -rotate-3 bg-brand-orange overflow-hidden flex z-30 py-5 sm:py-7 shadow-[0_0_30px_rgba(245,184,65,0.4)] justify-center">
+        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[#452701] font-bold text-lg sm:text-2xl lg:text-3xl tracking-wide max-w-7xl px-4 text-center">
+          <span>I am a Frontend Developer skilled in</span>
 
-        {/* Animated Skill Container */}
-        <div className="relative inline-flex items-center justify-center h-[50px] sm:h-[60px] min-w-[580px] sm:min-w-[440px] overflow-hidden mx-1">
-          <AnimatePresence mode="wait">
-            <StaggeredText key={index} text={skills[index]} />
-          </AnimatePresence>
+          <div className="relative inline-flex items-center justify-center h-[50px] sm:h-[60px] min-w-[580px] sm:min-w-[440px] overflow-hidden mx-1">
+            <AnimatePresence mode="wait">
+              <StaggeredText key={index} text={skills[index]} />
+            </AnimatePresence>
+          </div>
+
+          <span>building modern web applications</span>
         </div>
-
-        <span>building modern web applications</span>
       </div>
-    </div>
+    </section>
   );
 };

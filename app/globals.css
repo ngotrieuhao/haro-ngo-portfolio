@@ -1,6 +1,4 @@
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
 @tailwind utilities;
 
 :root {
@@ -13,10 +11,12 @@
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-brand-purple: #4B0082;
-  --color-brand-pink: #FF00FF;
-  --color-brand-orange: #FF8C00;
-  --color-brand-silver: #D3D3D3;
+  --color-brand-purple: #4b0082;
+  --color-brand-pink: #ff00ff;
+  --color-brand-orange: #ff8c00;
+  --color-brand-silver: #d3d3d3;
+  --color-brand-yellow: #f5b841;
+  --color-brand-orangeDark: #cc7000;
 }
 
 body {
