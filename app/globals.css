@@ -6,6 +6,8 @@
 :root {
   --background: #000000;
   --foreground: #ffffff;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-inter: "Inter", sans-serif;
 }
 
 @theme {
@@ -20,5 +22,5 @@
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-montserrat), var(--font-inter), sans-serif;
 }
