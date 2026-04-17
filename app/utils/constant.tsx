@@ -100,7 +100,7 @@ export const PROJECTS_DATA = [
     description:
       "Developed an internal training platform for employees and interns to complete technical assessments, learning modules, and performance evaluations.",
     top: "45%",
-    left: "15%",
+    left: "25%",
   },
   {
     id: 3,
