@@ -76,3 +76,54 @@ export const EXPERIENCES = [
     ],
   },
 ];
+
+export const PROJECTS_DATA = [
+  {
+    id: 1,
+    title: "Amai - Shopify Apps",
+    link: "https://amai.com/",
+    logoText: "AMAI",
+    logo: "/images/amai.png",
+    tech: ["Shopify", "Liquid", "React.js", "HTML", "CSS"],
+    description:
+      "Developed Shopify applications to enhance store management and improve customer shopping experience by providing store location and pickup functionalities.",
+    top: "45%",
+    left: "48%",
+  },
+  {
+    id: 2,
+    title: "Company Training Website",
+    link: "https://training.appscyclone.com/",
+    logoText: "TRAINING",
+    logo: "/images/apps-cyclone-logo.png",
+    tech: ["Next.js", "Vue.js", "TailwindCSS", "React Query"],
+    description:
+      "Developed an internal training platform for employees and interns to complete technical assessments, learning modules, and performance evaluations.",
+    top: "45%",
+    left: "15%",
+  },
+  {
+    id: 3,
+    title: "Ancient8",
+    link: "https://ancient8.gg/",
+    logoText: "A8",
+    logo: "/images/ancient.png",
+    tech: ["React.js", "Next.js", "TypeScript", "Framer Motion"],
+    description:
+      "Ancient8 is building an ETH gaming Layer 2 with OP Stack. Ancient8 offers a suite of Web3 gaming infrastructure tools that serve as the distribution and marketing channel for games globally.",
+    top: "25%",
+    left: "65%",
+  },
+  {
+    id: 4,
+    title: "Blockchain Academics & Blockademy",
+    link: "https://blockchainacademics.com/",
+    logoText: "Blockchain",
+    logo: "/images/apps-cyclone-logo.png",
+    tech: ["Next.js", "React.js", "TailwindCSS", "React Query", "Privy"],
+    description:
+      "Developed an online learning platform focused on blockchain education, providing courses, learning materials, and progress tracking for students and developers.",
+    top: "50%",
+    left: "80%",
+  },
+];
