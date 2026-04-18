@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useScroll, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Input from "../Input";
 import Label from "../Label";
 import Textarea from "../Textarea";
@@ -22,11 +22,6 @@ const schema = yup.object({
 });
 
 export const Contact = () => {
-  const ref = useRef<HTMLHeadingElement | HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["0 1", "0.8 1 "],
-  });
   const form = useRef<HTMLFormElement>(null);
   const {
     reset,
@@ -86,11 +81,10 @@ export const Contact = () => {
         <div className="mt-10 flex flex-wrap justify-between items-stretch mx-auto gap-8">
           {/* CONTACT LEFT */}
           <motion.div
-            ref={ref}
-            style={{
-              scale: scrollYProgress,
-              opacity: scrollYProgress,
-            }}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
             className="w-full lg:w-[35%] bg-linear-to-br from-brand-yellow to-brand-orangeDark rounded-xl shadow-[0_0_20px_4px_rgba(130,130,130,0.5)] p-4"
           >
             <div className="text-white text-xl font-bold text-center mb-4">
@@ -190,11 +184,10 @@ export const Contact = () => {
           </motion.div>
           {/* CONTACT RIGHT */}
           <motion.div
-            ref={ref}
-            style={{
-              scale: scrollYProgress,
-              opacity: scrollYProgress,
-            }}
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
             className="w-full lg:w-[55%] bg-linear-to-br from-brand-yellow to-brand-orangeDark rounded-xl shadow-[0_0_20px_4px_rgba(130,130,130,0.5)] p-4"
           >
             <div className="text-white text-xl font-bold text-center mb-4">

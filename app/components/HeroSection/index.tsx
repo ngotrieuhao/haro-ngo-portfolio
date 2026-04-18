@@ -1,27 +1,21 @@
 "use client";
 
-import { FC, useEffect, useRef } from "react";
 import {
   motion,
   useMotionValue,
   useSpring,
   useTransform,
-  useScroll,
-  useVelocity,
   useAnimationFrame,
 } from "framer-motion";
-import Image from "next/image";
 import Model from "../Model";
 import Button from "../Button";
-
-interface IProps {}
 
 function wrap(min: number, max: number, v: number) {
   const rangeSize = max - min;
   return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
 }
 
-export const HeroSection: FC<IProps> = (props) => {
+export const HeroSection = () => {
   // Mouse tracking logic
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -37,16 +31,6 @@ export const HeroSection: FC<IProps> = (props) => {
 
   // Scroll velocity parallax logic
   const baseX = useMotionValue(0);
-  const { scrollY } = useScroll();
-  const scrollVelocity = useVelocity(scrollY);
-  const smoothVelocity = useSpring(scrollVelocity, {
-    damping: 50,
-    stiffness: 400,
-  });
-  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, -5], {
-    clamp: false,
-  });
-
   useAnimationFrame((t, delta) => {
     // Base speed: left to right (positive)
     let moveBy = -1 * (delta / 1000); // 30 units per second
@@ -110,8 +94,8 @@ export const HeroSection: FC<IProps> = (props) => {
               transformStyle: "preserve-3d",
               willChange: "transform",
             }}
-            initial={{ opacity: 0, scale: 0.8, y: 50 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.1, ease: "easeOut" }}
             className="relative w-[300px] h-[400px] sm:w-[500px] sm:h-[600px] lg:w-[700px] lg:h-[800px] flex items-center justify-center scale-110"
           >

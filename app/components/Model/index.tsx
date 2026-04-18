@@ -1,14 +1,12 @@
 "use client";
 
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Float, OrbitControls, useGLTF, Preload } from "@react-three/drei";
+useGLTF.preload("/models/me.glb");
 
-// Preload model to avoid Suspense delay when HeroSection starts animating
-useGLTF.preload("/models/astronaut2.glb");
-
-function Astronaut() {
-  const { scene } = useGLTF("/models/astronaut2.glb");
+function Character() {
+  const { scene } = useGLTF("/models/me.glb");
 
   return (
     <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
@@ -28,7 +26,7 @@ export default function Model() {
         <spotLight position={[-10, 5, -10]} intensity={300} color="#ff8c00" />
         <spotLight position={[10, -5, -10]} intensity={300} color="#950DB7" />
 
-        <Astronaut />
+        <Character />
         <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1} />
         <Preload all />
       </Suspense>
