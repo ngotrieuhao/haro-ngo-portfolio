@@ -68,8 +68,8 @@ export const AutoRunTextHero: FC = () => {
   }, []);
 
   return (
-    <section>
-      <div className="absolute top-[60%] sm:top-[70%] left-[-20vw] w-[120vw] -rotate-3 bg-brand-orange overflow-hidden flex z-30 py-5 sm:py-7 shadow-[0_0_30px_rgba(245,184,65,0.4)] justify-center">
+    <section className="relative bottom-[20%]">
+      <div className="w-[120vw] -rotate-3 bg-brand-orange overflow-hidden flex z-30 py-5 sm:py-7 shadow-[0_0_30px_rgba(245,184,65,0.4)] justify-center">
         <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[#452701] font-bold text-lg sm:text-2xl lg:text-3xl tracking-wide max-w-7xl px-4 text-center">
           <span>I am a Frontend Developer skilled in</span>
 

@@ -3,6 +3,7 @@
 import { FC } from "react";
 import { motion } from "framer-motion";
 import { EXPERIENCES } from "@/app/utils/constant";
+import Image from "next/image";
 
 interface IProps {}
 
@@ -56,9 +57,12 @@ export const WorkExperience: FC<IProps> = () => {
                   style={{ backgroundColor: exp.iconBg }}
                 >
                   {/* Img Icon */}
-                  <img
+                  <Image
                     src={exp.icon}
                     alt={exp.company_name}
+                    width={0}
+                    height={0}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="w-[60%] h-[60%] object-contain scale-[1.1]"
                   />
                 </div>

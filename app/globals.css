@@ -17,6 +17,7 @@
   --color-brand-silver: #d3d3d3;
   --color-brand-yellow: #f5b841;
   --color-brand-orangeDark: #cc7000;
+  --color-brand-blue: #030649;
 }
 
 body {
@@ -158,4 +159,117 @@ body {
       left: 10%;
     }
   }
+}
+
+/* Input */
+.input_contact {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  font-size: 16px;
+  padding-left: 1rem;
+  height: 4rem;
+  width: 100%;
+  color: #000000;
+}
+.input_contact:focus-visible {
+  outline: none;
+}
+.input_contact:focus {
+  border-color: #6a5af9;
+  outline: #4070f4;
+}
+.input_contact:not(:placeholder-shown) + .form__label--email,
+.input_contact:focus + .form__label--email,
+.input_contact:not(:placeholder-shown) + .form__label--email-error,
+.input_contact:focus + .form__label--email-error,
+.input_contact:not(:placeholder-shown) + .form__label--name,
+.input_contact:focus + .form__label--name {
+  padding: 10px;
+  display: inline-block;
+  left: 10px;
+  top: 0;
+  background-color: #fff;
+  color: #6a5af9;
+}
+
+.form__label--name {
+  color: #999;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px;
+  user-select: none;
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+.form__label--email {
+  color: #999;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px;
+  user-select: none;
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+.form__label--email-error {
+  color: #999;
+  position: absolute;
+  top: 30%;
+  transform: translateY(-50%);
+  left: 20px;
+  user-select: none;
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+.form__label--message {
+  color: #999;
+  position: absolute;
+  top: 25%;
+  transform: translateY(-60%);
+  left: 20px;
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+.input_message {
+  border: 1px solid #eee;
+  padding-top: 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  padding-left: 1rem;
+  width: 100%;
+  resize: none;
+  color: #000;
+}
+.input_message:focus-visible {
+  outline: none;
+}
+.input_message:focus {
+  border-color: #6a5af9;
+  outline: #4070f4;
+}
+.input_message:not(:placeholder-shown) + .form__label--message,
+.input_message:focus + .form__label--message {
+  padding: 10px;
+  display: inline-block;
+  left: 10px;
+  top: 0;
+  background-color: #fff;
+  color: #6a5af9;
+}
+
+.form-group.invalid .input_contact {
+  border-color: #f33a58;
+}
+.form-group.invalid .input_message {
+  border-color: #f33a58;
+}
+.form-group.invalid label {
+  transform: translateY(-23px);
+}
+
+.form-group.invalid .form-message {
+  color: #f33a58;
 }

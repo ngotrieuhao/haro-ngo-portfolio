@@ -11,6 +11,7 @@ import {
   useAnimationFrame,
 } from "framer-motion";
 import Image from "next/image";
+import Model from "../Model";
 
 interface IProps {}
 
@@ -55,21 +56,21 @@ export const HeroSection: FC<IProps> = (props) => {
   // -50% of 8 items means exactly 4 items shift. It's a perfect seamless match.
   const x = useTransform(baseX, (v) => `${wrap(-50, 0, v)}%`);
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const { innerWidth, innerHeight } = window;
-      const mouseXNorm = e.clientX / innerWidth - 0.5;
-      const mouseYNorm = e.clientY / innerHeight - 0.5;
-      mouseX.set(mouseXNorm);
-      mouseY.set(mouseYNorm);
-    };
+  // useEffect(() => {
+  //   const handleMouseMove = (e: MouseEvent) => {
+  //     const { innerWidth, innerHeight } = window;
+  //     const mouseXNorm = e.clientX / innerWidth - 0.5;
+  //     const mouseYNorm = e.clientY / innerHeight - 0.5;
+  //     mouseX.set(mouseXNorm);
+  //     mouseY.set(mouseYNorm);
+  //   };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
+  //   window.addEventListener("mousemove", handleMouseMove);
+  //   return () => window.removeEventListener("mousemove", handleMouseMove);
+  // }, [mouseX, mouseY]);
 
   return (
-    <section className="w-full">
+    <section className="w-full relative z-40">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -91,7 +92,7 @@ export const HeroSection: FC<IProps> = (props) => {
         </motion.div>
       </motion.div>
 
-      <div className="w-full flex flex-col lg:flex-row items-center justify-between z-10 relative mt-[-5%]">
+      <div className="w-full flex flex-col lg:flex-row items-center justify-between z-10 relative mt-[50px] sm:mt-[100px]">
         <motion.div
           initial={{ opacity: 0, x: -60 }}
           animate={{ opacity: 1, x: 0 }}
@@ -104,7 +105,7 @@ export const HeroSection: FC<IProps> = (props) => {
           </p>
         </motion.div>
 
-        <div className="w-full lg:w-1/3 flex justify-center relative z-10 order-1 lg:order-2 perspective-[1000px]">
+        <div className="w-full lg:w-1/3 flex justify-center relative z-40 order-1 lg:order-2 perspective-[1000px]">
           <motion.div
             style={{
               rotateX,
@@ -116,16 +117,9 @@ export const HeroSection: FC<IProps> = (props) => {
             initial={{ opacity: 0, scale: 0.8, y: 50 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.1, ease: "easeOut" }}
-            className="relative w-[300px] sm:w-[450px] lg:w-[600px] scale-[1.25] aspect-square flex items-center justify-center"
+            className="relative w-[300px] h-[400px] sm:w-[500px] sm:h-[600px] lg:w-[700px] lg:h-[800px] flex items-center justify-center scale-110"
           >
-            <Image
-              src="/images/me.png"
-              alt="3D Character"
-              fill
-              className="object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.9)] z-20 pointer-events-none"
-              priority
-              sizes="(max-width: 768px) 300px, (max-width: 1024px) 450px, 1000px"
-            />
+            <Model />
           </motion.div>
         </div>
 

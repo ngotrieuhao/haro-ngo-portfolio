@@ -49,7 +49,7 @@ export const EXPERIENCES = [
   {
     title: "Frontend Developer",
     company_name: "Apps Cyclone Technology JSC",
-    icon: "./images/apps-cyclone-logo.png",
+    icon: "/images/apps-cyclone-logo.png",
     iconBg: "#E6DEDD",
     date: "Nov 2022 - Jan 2026",
     points: [
@@ -65,7 +65,7 @@ export const EXPERIENCES = [
   {
     title: "Frontend Developer Intern",
     company_name: "Nata Technology JSC",
-    icon: "./images/nata-logo.png",
+    icon: "/images/nata-logo.png",
     iconBg: "#E6DEDD",
     date: "Jan 2021 - Mar 2021",
     points: [
