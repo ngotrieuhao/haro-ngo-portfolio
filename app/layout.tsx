@@ -1,14 +1,9 @@
 import type { Metadata } from "next";
-import { Montserrat, Inter } from "next/font/google";
+import { Montserrat, Inter, Roboto } from "next/font/google";
 import "./globals.css";
 
 const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["latin"],
-}); 
-
-const inter = Inter({
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700", "900"],
   subsets: ["latin"],
 });
 
@@ -25,9 +20,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${inter.variable} h-full antialiased`}
+      className={`${montserrat.className} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }

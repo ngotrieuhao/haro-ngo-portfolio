@@ -8,11 +8,11 @@ import { Title } from "../Title";
 export const Skills = () => {
   return (
     <section className="relative">
-      <div className="w-full max-w-7xl mx-auto px-6 sm:px-12 py-20 relative z-20">
+      <div className="w-full lg:max-w-7xl mx-auto px-6 sm:px-12 lg:py-20 py-10 relative z-20">
         <Title description="What I Can Do" title="Skills" />
         <div className="flex flex-wrap justify-center gap-10 mt-10">
           {ICONS.map((icon) => (
-            <div className="w-32 h-32" key={icon.name}>
+            <div className="md:w-32 md:h-32 w-16 h-16" key={icon.name}>
               <Ball icon={icon.icon} />
             </div>
           ))}

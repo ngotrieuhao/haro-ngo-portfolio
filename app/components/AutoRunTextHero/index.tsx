@@ -69,11 +69,11 @@ export const AutoRunTextHero: FC = () => {
 
   return (
     <section className="relative bottom-[20%]">
-      <div className="w-[120vw] -rotate-3 bg-brand-orange overflow-hidden flex z-30 py-5 sm:py-7 shadow-[0_0_30px_rgba(245,184,65,0.4)] justify-center">
-        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[#452701] font-bold text-lg sm:text-2xl lg:text-3xl tracking-wide max-w-7xl px-4 text-center">
+      <div className="lg:w-[120vw] rotate-0 lg:-rotate-3 bg-brand-orange overflow-hidden flex z-30 py-5 sm:py-7 shadow-[0_0_30px_rgba(245,184,65,0.4)] justify-center">
+        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[#452701] font-bold text-lg sm:text-2xl lg:text-3xl tracking-wide lg:max-w-7xl lg:px-4 text-center">
           <span>I am a Frontend Developer skilled in</span>
 
-          <div className="relative inline-flex items-center justify-center h-[50px] sm:h-[60px] min-w-[580px] sm:min-w-[440px] overflow-hidden mx-1">
+          <div className="relative select-none inline-flex items-center justify-center h-[50px] sm:h-[60px] min-w-[340px] sm:min-w-[440px] lg:min-w-[550px] overflow-hidden mx-1">
             <AnimatePresence mode="wait">
               <StaggeredText key={index} text={skills[index]} />
             </AnimatePresence>

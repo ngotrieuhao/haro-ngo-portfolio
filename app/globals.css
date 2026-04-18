@@ -5,7 +5,6 @@
   --background: #000000;
   --foreground: #ffffff;
   --font-montserrat: "Montserrat", sans-serif;
-  --font-inter: "Inter", sans-serif;
 }
 
 @theme {
@@ -18,12 +17,14 @@
   --color-brand-yellow: #f5b841;
   --color-brand-orangeDark: #cc7000;
   --color-brand-blue: #030649;
+  --color-brand-brown: #6b2c12;
+  --color-brand-yellowLight: #f2cb92;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-montserrat), var(--font-inter), sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
 }
 
 /* Intro */

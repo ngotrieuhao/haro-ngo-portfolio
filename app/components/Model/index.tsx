@@ -4,6 +4,9 @@ import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Float, OrbitControls, useGLTF, Preload } from "@react-three/drei";
 
+// Preload model to avoid Suspense delay when HeroSection starts animating
+useGLTF.preload("/models/astronaut2.glb");
+
 function Astronaut() {
   const { scene } = useGLTF("/models/astronaut2.glb");
 
@@ -16,7 +19,7 @@ function Astronaut() {
 
 export default function Model() {
   return (
-    <Canvas camera={{ position: [0, 0, 7], fov: 45 }}>
+    <Canvas camera={{ position: [0, 0, 7], fov: 45 }} dpr={[1, 2]}>
       <Suspense fallback={null}>
         <ambientLight intensity={1.5} />
         <directionalLight position={[5, 10, 5]} intensity={2.5} />

@@ -38,7 +38,7 @@ const BallMesh = ({ imgUrl }: { imgUrl: string }) => {
 
 export const Ball = ({ icon }: { icon: string }) => {
   return (
-    <Canvas frameloop="always" gl={{ preserveDrawingBuffer: true }}>
+    <Canvas frameloop="always" gl={{ preserveDrawingBuffer: true }} dpr={[1, 1.5]}>
       <Suspense fallback={null}>
         <OrbitControls enableZoom={false} />
         <BallMesh imgUrl={icon} />

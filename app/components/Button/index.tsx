@@ -10,13 +10,14 @@ const Button = ({
   onClick = () => {},
   children,
   isLoading,
+  className,
   ...props
 }: ButtonProps) => {
   //   const { isLoading } = props;
   const child = !!isLoading ? <LoadingSpinner></LoadingSpinner> : children;
   return (
     <button
-      className="btn_send--contact"
+      className={`${className} select-none`}
       type={type}
       onClick={onClick}
       {...props}

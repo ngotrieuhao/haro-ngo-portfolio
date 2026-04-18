@@ -12,6 +12,7 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import Model from "../Model";
+import Button from "../Button";
 
 interface IProps {}
 
@@ -56,18 +57,12 @@ export const HeroSection: FC<IProps> = (props) => {
   // -50% of 8 items means exactly 4 items shift. It's a perfect seamless match.
   const x = useTransform(baseX, (v) => `${wrap(-50, 0, v)}%`);
 
-  // useEffect(() => {
-  //   const handleMouseMove = (e: MouseEvent) => {
-  //     const { innerWidth, innerHeight } = window;
-  //     const mouseXNorm = e.clientX / innerWidth - 0.5;
-  //     const mouseYNorm = e.clientY / innerHeight - 0.5;
-  //     mouseX.set(mouseXNorm);
-  //     mouseY.set(mouseYNorm);
-  //   };
-
-  //   window.addEventListener("mousemove", handleMouseMove);
-  //   return () => window.removeEventListener("mousemove", handleMouseMove);
-  // }, [mouseX, mouseY]);
+  const handleScroll = () => {
+    const section = document.getElementById("contact");
+    section?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
 
   return (
     <section className="w-full relative z-40">
@@ -97,9 +92,9 @@ export const HeroSection: FC<IProps> = (props) => {
           initial={{ opacity: 0, x: -60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-          className="w-full lg:w-1/3 mb-10 lg:mb-0 flex justify-center lg:justify-start text-center lg:text-left z-20 order-2 lg:order-1 pt-10 lg:pt-0"
+          className="w-full lg:w-1/3 mb-0 flex justify-center lg:justify-start text-center lg:text-left z-20 order-2 lg:order-1 pt-10 lg:pt-0"
         >
-          <p className="text-zinc-200 text-sm sm:text-base font-semibold font-sans uppercase leading-loose tracking-wide max-w-[320px]">
+          <p className="text-zinc-200 text-sm sm:text-base font-semibold uppercase leading-loose tracking-wide md:max-w-[550px] lg:max-w-[320px]">
             A FRONTEND DEVELOPER PASSIONATE ABOUT BUILDING SCALABLE,
             HIGH-PERFORMANCE AND USER-FRIENDLY WEB APPLICATIONS
           </p>
@@ -113,6 +108,7 @@ export const HeroSection: FC<IProps> = (props) => {
               x: translateX,
               y: translateY,
               transformStyle: "preserve-3d",
+              willChange: "transform",
             }}
             initial={{ opacity: 0, scale: 0.8, y: 50 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -127,11 +123,14 @@ export const HeroSection: FC<IProps> = (props) => {
           initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-          className="w-full lg:w-1/3 mt-10 lg:mt-0 flex justify-center lg:justify-end z-20 order-3"
+          className="w-full lg:w-1/3 my-10 lg:my-0 flex justify-center lg:justify-end z-20 order-3"
         >
-          <button className="bg-linear-to-r border-2 border-brand-purple hover:border-white from-brand-purple via-brand-pink to-brand-orange text-white font-bold py-3.5 px-8 sm:py-5 sm:px-12 rounded-full text-base sm:text-xl hover:scale-[1.05] transition-all duration-300 shadow-[0_10px_40px_-10px_rgba(255,0,255,0.7)] uppercase tracking-wider backdrop-blur-sm">
-            CONTACT ME
-          </button>
+          <Button
+            onClick={handleScroll}
+            className="cursor-pointer capitalize bg-linear-to-r border border-brand-orange hover:border-white from-brand-orange via-brand-yellow to-brand-orange text-white font-bold py-3.5 px-8 sm:py-5 sm:px-12 rounded-full text-base sm:text-xl hover:scale-[1.05] transition-all duration-300 shadow-[0_10px_40px_-10px_rgba(255,140,0)] tracking-wider backdrop-blur-sm"
+          >
+            Contact Me
+          </Button>
         </motion.div>
       </div>
     </section>

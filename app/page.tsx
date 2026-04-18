@@ -14,13 +14,13 @@ import Footer from "./components/Footer";
 export default function Home() {
   const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   setLoading(true);
-  //   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   }, 6000);
-  // }, []);
+  useEffect(() => {
+    setLoading(true);
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    setTimeout(() => {
+      setLoading(false);
+    }, 6000);
+  }, []);
 
   return (
     <Fragment>
@@ -29,7 +29,7 @@ export default function Home() {
       ) : (
         <div className="bg-black relative">
           {/* Main Content */}
-          <main className="relative flex flex-col font-sans overflow-hidden perspective-[1000px]">
+          <main className="relative flex flex-col overflow-hidden perspective-[1000px]">
             <section className="relative flex-1 flex max-w-[1600px] mx-auto z-10 items-center justify-center w-full">
               <HeroSection />
             </section>

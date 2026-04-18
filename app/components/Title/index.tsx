@@ -20,7 +20,7 @@ export const Title: FC<IProps> = ({ title, description }) => {
           {description}
         </p>
       )}
-      <h2 className="text-white text-5xl capitalize sm:text-6xl md:text-7xl font-black tracking-tight">
+      <h2 className="text-white text-4xl capitalize sm:text-6xl md:text-7xl font-black tracking-tight">
         {title}
       </h2>
     </motion.div>

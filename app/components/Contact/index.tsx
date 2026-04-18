@@ -80,8 +80,8 @@ export const Contact = () => {
   }, [errors]);
 
   return (
-    <section className="py-20" id="contact">
-      <div className="w-full max-w-7xl mx-auto mb-10">
+    <section className="lg:py-20 pt-10" id="contact">
+      <div className="w-full lg:max-w-7xl mx-auto mb-10 px-6 lg:px-12">
         <Title description="Get In Touch" title="Contact" />
         <div className="mt-10 flex flex-wrap justify-between items-stretch mx-auto gap-8">
           {/* CONTACT LEFT */}
@@ -105,7 +105,7 @@ export const Contact = () => {
                     src="/images/email.png"
                     alt="Email"
                     fill
-                    className="object-cover"
+                    className="object-cover select-none"
                   />
                 </div>
                 <div>
@@ -127,7 +127,7 @@ export const Contact = () => {
                       src="/images/phone.png"
                       alt="Phone"
                       fill
-                      className="object-cover"
+                      className="object-cover select-none"
                     />
                   </div>
                 </div>
@@ -149,7 +149,7 @@ export const Contact = () => {
                     src="/images/github.png"
                     alt="Github"
                     fill
-                    className="object-cover"
+                    className="object-cover select-none"
                   />
                 </div>
                 <div>
@@ -171,7 +171,7 @@ export const Contact = () => {
                     src="/images/linkedin.png"
                     alt="Linkedin"
                     fill
-                    className="object-cover"
+                    className="object-cover select-none"
                   />
                 </div>
                 <div>
@@ -253,7 +253,7 @@ export const Contact = () => {
                   type="submit"
                   isLoading={isSubmitting}
                   disabled={isSubmitting}
-                  className="w-1/2 h-12 select-none cursor-pointer text-white bg-brand-orangeDark rounded-lg uppercase text-lg hover:bg-gray-800 transition"
+                  className="btn_send--contact w-1/2 h-12 select-none cursor-pointer text-white bg-brand-orangeDark rounded-lg uppercase text-lg hover:bg-gray-800 transition"
                 >
                   Send
                 </Button>
