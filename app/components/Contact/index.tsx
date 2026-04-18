@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
@@ -29,9 +29,14 @@ export const Contact = () => {
     handleSubmit,
     formState: { errors, isValid, isSubmitting },
   } = useForm({
-    mode: "onChange",
+    mode: "onSubmit",
     resolver: yupResolver(schema),
   });
+
+  const onError = (errors: any) => {
+    const firstError = Object.values(errors)[0] as any;
+    toast.error(firstError?.message);
+  };
 
   const sendEmail = (data: any) => {
     if (!isValid) return;
@@ -63,16 +68,6 @@ export const Contact = () => {
       }, 2000);
     });
   };
-
-  useEffect(() => {
-    const arrErrors = Object.values(errors);
-    if (arrErrors.length > 0) {
-      toast.error(arrErrors[0]?.message, {
-        pauseOnHover: false,
-        delay: 100,
-      });
-    }
-  }, [errors]);
 
   return (
     <section className="lg:py-20 pt-10" id="contact">
@@ -198,7 +193,7 @@ export const Contact = () => {
               className="contact__form bg-white rounded-xl p-6 pt-8"
               ref={form}
               autoComplete="off"
-              onSubmit={handleSubmit(sendEmail)}
+              onSubmit={handleSubmit(sendEmail, onError)}
             >
               {/* Name */}
               <div className="form-group relative mb-6">
@@ -246,7 +241,7 @@ export const Contact = () => {
                   type="submit"
                   isLoading={isSubmitting}
                   disabled={isSubmitting}
-                  className="btn_send--contact w-1/2 h-12 select-none cursor-pointer text-white bg-brand-orangeDark rounded-lg uppercase text-lg hover:bg-gray-800 transition"
+                  className="btn_send--contact mx-auto flex justify-center items-center w-1/2 h-12 select-none cursor-pointer text-white bg-brand-orangeDark rounded-lg uppercase text-lg hover:bg-gray-800 transition"
                 >
                   Send
                 </Button>
