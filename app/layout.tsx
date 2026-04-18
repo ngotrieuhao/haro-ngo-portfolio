@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Montserrat, Inter, Roboto } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 const montserrat = Montserrat({
   weight: ["400", "500", "600", "700", "900"],
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         {children}
       </body>
+      <Analytics />
     </html>
   );
 }
