@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
@@ -9,8 +9,8 @@ import Input from "../Input";
 import Label from "../Label";
 import Textarea from "../Textarea";
 import Button from "../Button";
-import Model from "../Model";
 import Image from "next/image";
+import { Title } from "../Title";
 
 const schema = yup.object({
   to_name: yup.string().required("Please enter your name"),
@@ -82,19 +82,8 @@ export const Contact = () => {
   return (
     <section className="py-20" id="contact">
       <div className="w-full max-w-7xl mx-auto mb-10">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col"
-        >
-          <h2 className="text-white text-5xl sm:text-6xl md:text-7xl font-black tracking-tight">
-            Contact
-          </h2>
-        </motion.div>
-
-        <div className="mt-6 flex flex-wrap justify-between items-stretch mx-auto gap-8">
+        <Title description="Get In Touch" title="Contact" />
+        <div className="mt-10 flex flex-wrap justify-between items-stretch mx-auto gap-8">
           {/* CONTACT LEFT */}
           <motion.div
             ref={ref}

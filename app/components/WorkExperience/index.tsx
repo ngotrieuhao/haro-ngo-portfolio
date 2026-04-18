@@ -4,29 +4,15 @@ import { FC } from "react";
 import { motion } from "framer-motion";
 import { EXPERIENCES } from "@/app/utils/constant";
 import Image from "next/image";
+import { Title } from "../Title";
 
 interface IProps {}
 
 export const WorkExperience: FC<IProps> = () => {
   return (
     <section className="relative">
-      <div className="w-full max-w-7xl mx-auto px-6 sm:px-12 py-20 relative z-20">
-        {/* Header Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col mb-20"
-        >
-          <p className="text-zinc-400 text-sm sm:text-base font-semibold tracking-widest uppercase mb-2">
-            WHAT I HAVE DONE SO FAR
-          </p>
-          <h2 className="text-white text-5xl sm:text-6xl md:text-7xl font-black tracking-tight">
-            Work Experience.
-          </h2>
-        </motion.div>
-
+      <div className="w-full max-w-7xl mx-auto px-6 sm:px-12 py-14 relative z-20">
+        <Title description="What I Have Done So Far" title="Work Experience" />
         {/* Timeline Section */}
         <div className="relative mt-10">
           {/* The central vertical line */}
@@ -47,7 +33,7 @@ export const WorkExperience: FC<IProps> = () => {
                   type: "spring",
                   bounce: 0.3,
                 }}
-                className={`relative flex flex-col md:flex-row items-center justify-between w-full mb-16 md:mb-24 ${
+                className={`relative flex flex-col md:flex-row items-center justify-between w-full ${
                   isLeft ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >

@@ -9,6 +9,7 @@ import { Fragment } from "react/jsx-runtime";
 import { useEffect, useState } from "react";
 import { Intro } from "./components/Intro";
 import { Contact } from "./components/Contact";
+import Footer from "./components/Footer";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
@@ -38,6 +39,7 @@ export default function Home() {
             <Projects />
             <Contact />
           </main>
+          <Footer />
         </div>
       )}
     </Fragment>

@@ -3,25 +3,13 @@
 import { PROJECTS_DATA } from "@/app/utils/constant";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Title } from "../Title";
 
 export const Projects = () => {
   return (
     <section className="relative w-full py-20 z-20">
       <div className="w-full max-w-7xl mx-auto mb-10">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col"
-        >
-          <p className="text-zinc-400 text-sm sm:text-base font-semibold tracking-widest uppercase mb-2">
-            Hand-Coded Work
-          </p>
-          <h2 className="text-white text-5xl sm:text-6xl md:text-7xl font-black tracking-tight">
-            Projects
-          </h2>
-        </motion.div>
+        <Title description="Hand-Coded Work" title="Projects" />
       </div>
 
       {/* Map Container */}
