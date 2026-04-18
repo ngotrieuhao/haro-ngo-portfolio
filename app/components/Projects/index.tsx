@@ -13,10 +13,27 @@ export const Projects = () => {
       </div>
 
       {/* Mobile Grid View (Hidden on Desktop) */}
-      <div className="md:hidden grid grid-cols-3 gap-4">
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={{
+          hidden: { opacity: 0 },
+          show: { opacity: 1, transition: { staggerChildren: 0.15 } },
+        }}
+        className="md:hidden grid grid-cols-3 gap-4"
+      >
         {PROJECTS_DATA.map((project) => (
-          <a
+          <motion.a
             key={project.id}
+            variants={{
+              hidden: { opacity: 0, y: 50 },
+              show: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.5, ease: "easeOut" },
+              },
+            }}
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
@@ -31,27 +48,59 @@ export const Projects = () => {
                 className="object-contain select-none"
               />
             </div>
-          </a>
+          </motion.a>
         ))}
-      </div>
+      </motion.div>
 
       {/* Desktop Map Container (Hidden on Mobile) */}
-      <div className="hidden md:block w-full pb-10">
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={{
+          hidden: { opacity: 0 },
+          show: {
+            opacity: 1,
+            transition: { staggerChildren: 0.15, delayChildren: 0.2 },
+          },
+        }}
+        className="hidden md:block w-full pb-10"
+      >
         <div className="relative min-w-[800px] md:w-full h-[450px] md:h-[430px] lg:h-[863px] mx-auto overflow-hidden lg:overflow-visible flex items-center justify-center">
           {/* Background Image Map */}
-          <div className="absolute inset-0 z-0 select-none ">
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 100 },
+              show: {
+                originY: 0.5,
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.8, ease: "easeOut" },
+              },
+            }}
+            className="absolute inset-0 z-0 select-none "
+          >
             <Image
               src="/images/map.png"
               alt="World Map Projects"
               fill
               className="object-contain pointer-events-none"
             />
-          </div>
+          </motion.div>
 
           {/* Project Markers overlay */}
           {PROJECTS_DATA.map((project) => (
-            <div
+            <motion.div
               key={project.id}
+              variants={{
+                hidden: { opacity: 0, scale: 0, y: 50 },
+                show: {
+                  opacity: 1,
+                  scale: 1,
+                  y: 0,
+                  transition: { type: "spring", bounce: 0.5 },
+                },
+              }}
               className="absolute z-10 group"
               style={{ top: project.top, left: project.left }}
             >
@@ -131,10 +180,10 @@ export const Projects = () => {
                   {project.description}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
