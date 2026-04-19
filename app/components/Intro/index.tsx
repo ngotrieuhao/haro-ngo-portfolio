@@ -1,7 +1,7 @@
 export const Intro = () => {
   return (
     <div className="intro">
-      <video loop autoPlay muted>
+      <video loop autoPlay muted playsInline>
         <source type="video/mp4" src="./video/smoke.mp4" />
       </video>
       <h1>
