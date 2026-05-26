@@ -1,17 +1,35 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState, memo } from "react";
 import { PROJECTS_DATA } from "@/app/utils/constant";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Title } from "../Title";
 
-export const Projects = () => {
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.12 } },
+};
+
+const markerVariants = {
+  hidden: { opacity: 0, scale: 0.95, y: 20 },
+  show: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.45 } },
+};
+
+const desktopVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.12, delayChildren: 0.15 },
+  },
+};
+
+export const Projects = memo(() => {
   const [hoveredProjectId, setHoveredProjectId] = useState<number | null>(null);
 
   return (
-    <section className="relative w-full lg:py-20 pt-10 z-20 px-6 lg:px-0">
-      <div className="w-full max-w-7xl mx-auto mb-10">
+    <section className="relative z-20 w-full px-6 pt-10 lg:py-20 lg:px-0">
+      <div className="w-full mx-auto mb-10 max-w-7xl">
         <Title description="Hand-Coded Work" title="Projects" />
       </div>
 
@@ -20,11 +38,8 @@ export const Projects = () => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.1 }}
-        variants={{
-          hidden: { opacity: 0 },
-          show: { opacity: 1, transition: { staggerChildren: 0.15 } },
-        }}
-        className="md:hidden grid grid-cols-3 gap-4"
+        variants={containerVariants}
+        className="grid grid-cols-3 gap-4 md:hidden"
       >
         {PROJECTS_DATA.map((project) => (
           <motion.a
@@ -34,7 +49,7 @@ export const Projects = () => {
               show: {
                 opacity: 1,
                 y: 0,
-                transition: { duration: 0.5, ease: "easeOut" },
+                transition: { duration: 0.5 },
               },
             }}
             href={project.link}
@@ -42,7 +57,7 @@ export const Projects = () => {
             rel="noopener noreferrer"
             className="relative aspect-square bg-black border-[1px] border-brand-yellow/30 hover:border-brand-yellow transition-colors duration-300 flex items-center justify-center p-4 group rounded-xl"
           >
-            <div className="relative w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="relative w-full h-full transition-opacity duration-300 opacity-80 group-hover:opacity-100">
               <Image
                 src={project.logo}
                 alt={project.title}
@@ -61,35 +76,26 @@ export const Projects = () => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
-        variants={{
-          hidden: { opacity: 0 },
-          show: {
-            opacity: 1,
-            transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-          },
-        }}
-        className="hidden md:block w-full pb-10"
+        variants={desktopVariants}
+        className="hidden w-full pb-10 md:block"
       >
         <div className="relative min-w-[800px] md:w-full h-[450px] md:h-[430px] lg:h-[863px] mx-auto overflow-hidden lg:overflow-visible flex items-center justify-center">
           {/* Background Image Map */}
           <motion.div
             variants={{
-              hidden: { opacity: 0, y: 100 },
-              show: {
-                originY: 0.5,
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.8, ease: "easeOut" },
-              },
+              hidden: { opacity: 0, y: 80 },
+              show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
             }}
             className="absolute inset-0 z-0 select-none "
           >
+            {/* Use Next/Image with explicit width/height to satisfy Next lint while keeping lazy loading */}
             <Image
               src="/images/map.png"
               alt="World Map Projects"
-              fill
-              sizes="(max-width: 1024px) 100vw, 1280px"
-              className="object-contain pointer-events-none"
+              width={1280}
+              height={720}
+              loading="lazy"
+              className="object-contain w-full h-full pointer-events-none"
             />
           </motion.div>
 
@@ -97,17 +103,13 @@ export const Projects = () => {
           {PROJECTS_DATA.map((project) => (
             <motion.div
               key={project.id}
-              variants={{
-                hidden: { opacity: 0, scale: 0, y: 50 },
-                show: {
-                  opacity: 1,
-                  scale: 1,
-                  y: 0,
-                  transition: { type: "spring", bounce: 0.5 },
-                },
-              }}
+              variants={markerVariants}
               className="absolute z-10"
-              style={{ top: project.top, left: project.left }}
+              style={{
+                top: project.top,
+                left: project.left,
+                willChange: "transform, opacity",
+              }}
               onMouseEnter={() => setHoveredProjectId(project.id)}
               onMouseLeave={() => setHoveredProjectId(null)}
             >
@@ -130,7 +132,7 @@ export const Projects = () => {
                     initial={{ opacity: 0, scale: 0.9, y: 15 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.9, y: 15 }}
-                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    transition={{ duration: 0.25 }}
                     className="absolute bottom-full left-1/2 -translate-x-1/2 mb-6 w-[320px] sm:w-[480px] bg-brand-orangeDark border-4 border-brand-yellow p-4 origin-bottom shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-50 rounded-2xl pointer-events-auto"
                   >
                     {/* Pointer Triangle */}
@@ -139,9 +141,9 @@ export const Projects = () => {
                     <div className="absolute -bottom-[13px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-10 border-r-10 border-t-13 border-l-transparent border-r-transparent border-t-brand-yellow z-10" />
 
                     {/* Card Header */}
-                    <div className="flex gap-4 items-center mb-4">
+                    <div className="flex items-center gap-4 mb-4">
                       {/* Logo Circle */}
-                      <div className="relative w-16 h-16 bg-black rounded-full flex shrink-0 items-center justify-center overflow-hidden border border-zinc-200">
+                      <div className="relative flex items-center justify-center w-16 h-16 overflow-hidden bg-black border rounded-full shrink-0 border-zinc-200">
                         <Image
                           src={project.logo}
                           alt={project.title}
@@ -154,12 +156,12 @@ export const Projects = () => {
 
                       {/* Title & Tags */}
                       <div className="flex flex-col gap-1.5">
-                        <div className="flex items-center gap-2 text-black font-bold text-xl sm:text-2xl">
+                        <div className="flex items-center gap-2 text-xl font-bold text-black sm:text-2xl">
                           {project.title}
                           {/* External Link SVG */}
                           <a
                             href={project.link}
-                            className="cursor-pointer hover:opacity-70 transition-opacity"
+                            className="transition-opacity cursor-pointer hover:opacity-70"
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -193,7 +195,7 @@ export const Projects = () => {
                     </div>
 
                     {/* Description Body */}
-                    <p className="text-black font-bold text-sm leading-snug">
+                    <p className="text-sm font-bold leading-snug text-black">
                       {project.description}
                     </p>
                   </motion.div>
@@ -205,4 +207,7 @@ export const Projects = () => {
       </motion.div>
     </section>
   );
-};
+});
+
+// For React DevTools and linting
+Projects.displayName = "Projects";

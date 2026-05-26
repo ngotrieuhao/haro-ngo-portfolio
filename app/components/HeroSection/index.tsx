@@ -11,7 +11,6 @@ import dynamic from "next/dynamic";
 const Model = dynamic(() => import("../Model"), { ssr: false });
 import Button from "../Button";
 
-
 function wrap(min: number, max: number, v: number) {
   const rangeSize = max - min;
   return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
@@ -55,7 +54,7 @@ export const HeroSection = () => {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
+        transition={{ duration: 1.2 }}
         className="absolute top-10 w-[200vw] sm:w-[150vw] left-[-50vw] flex items-center shadow-none pointer-events-none select-none z-0 overflow-hidden"
       >
         <motion.div
@@ -77,7 +76,7 @@ export const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0, x: -60 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+          transition={{ duration: 1, delay: 0.3 }}
           className="w-full lg:w-1/3 mb-0 flex justify-center lg:justify-start text-center lg:text-left z-20 order-2 lg:order-1 pt-10 lg:pt-0"
         >
           <p className="text-zinc-200 text-sm sm:text-base font-semibold uppercase leading-loose tracking-wide md:max-w-[550px] lg:max-w-[320px]">
@@ -98,7 +97,7 @@ export const HeroSection = () => {
             }}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.1, ease: "easeOut" }}
+            transition={{ duration: 1, delay: 0.1 }}
             className="relative w-[300px] h-[400px] sm:w-[500px] sm:h-[600px] lg:w-[700px] lg:h-[800px] flex items-center justify-center scale-110"
           >
             <Model />
@@ -108,7 +107,7 @@ export const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+          transition={{ duration: 1, delay: 0.5 }}
           className="w-full lg:w-1/3 my-10 lg:my-0 flex justify-center lg:justify-end z-20 order-3"
         >
           <Button

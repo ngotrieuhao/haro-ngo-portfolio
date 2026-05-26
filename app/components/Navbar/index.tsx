@@ -1,27 +1,25 @@
 import { FC } from "react";
 import { motion } from "framer-motion";
 
-interface IProps {}
-
-export const Navbar: FC<IProps> = (props) => {
+export const Navbar: FC = () => {
   return (
     <motion.nav
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="w-full flex justify-center py-8 z-20 relative"
+      transition={{ duration: 0.8 }}
+      className="relative z-20 flex justify-center w-full py-8"
     >
-      <ul className="flex gap-8 sm:gap-20 text-xs sm:text-sm font-bold tracking-widest text-zinc-100 uppercase">
-        <li className="cursor-pointer hover:text-white transition-colors">
+      <ul className="flex gap-8 text-xs font-bold tracking-widest uppercase sm:gap-20 sm:text-sm text-zinc-100">
+        <li className="transition-colors cursor-pointer hover:text-white">
           ABOUT
         </li>
-        <li className="cursor-pointer hover:text-white transition-colors">
+        <li className="transition-colors cursor-pointer hover:text-white">
           CUSTOMERS
         </li>
-        <li className="cursor-pointer hover:text-white transition-colors">
+        <li className="transition-colors cursor-pointer hover:text-white">
           PROJECT
         </li>
-        <li className="cursor-pointer hover:text-white transition-colors">
+        <li className="transition-colors cursor-pointer hover:text-white">
           CONTACT
         </li>
       </ul>
