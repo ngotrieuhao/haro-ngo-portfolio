@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { ICONS } from "@/app/utils/constant";
-import { Ball } from "../Ball";
+import dynamic from "next/dynamic";
+const Ball = dynamic(() => import("../Ball").then((mod) => mod.Ball), { ssr: false });
 import { Title } from "../Title";
 
 export const Skills = () => {

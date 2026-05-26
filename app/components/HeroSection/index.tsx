@@ -7,8 +7,10 @@ import {
   useTransform,
   useAnimationFrame,
 } from "framer-motion";
-import Model from "../Model";
+import dynamic from "next/dynamic";
+const Model = dynamic(() => import("../Model"), { ssr: false });
 import Button from "../Button";
+
 
 function wrap(min: number, max: number, v: number) {
   const rangeSize = max - min;
@@ -33,7 +35,7 @@ export const HeroSection = () => {
   const baseX = useMotionValue(0);
   useAnimationFrame((t, delta) => {
     // Base speed: left to right (positive)
-    let moveBy = -1 * (delta / 1000); // 30 units per second
+    const moveBy = -1 * (delta / 1000); // 30 units per second
     baseX.set(baseX.get() + moveBy);
   });
 
@@ -65,7 +67,7 @@ export const HeroSection = () => {
               key={i}
               className="text-[17vw] xl:text-[15vw] shrink-0 font-black leading-none bg-linear-to-b from-zinc-200 via-zinc-400 to-zinc-700 bg-clip-text text-transparent tracking-tighter"
             >
-              HI, I'M <span className="text-brand-orange">HARO</span>
+              HI, I&apos;M <span className="text-brand-orange">HARO</span>
             </h1>
           ))}
         </motion.div>

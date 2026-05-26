@@ -1,16 +1,21 @@
 import React, { InputHTMLAttributes } from "react";
-import { useController } from "react-hook-form";
+import { useController, Control, FieldValues } from "react-hook-form";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputProps<TFieldValues extends FieldValues = FieldValues> extends InputHTMLAttributes<HTMLInputElement> {
   name?: string;
-  control?: any;
+  control?: Control<TFieldValues>;
 }
 
-const Input = ({ name = "", type = "text", control, ...props }: InputProps) => {
+const Input = <TFieldValues extends FieldValues = FieldValues>({
+  name = "",
+  type = "text",
+  control,
+  ...props
+}: InputProps<TFieldValues>) => {
   const { field } = useController({
     control,
-    name,
-    defaultValue: "",
+    name: name as never,
+    defaultValue: "" as never,
   });
   return <input id={name} type={type} {...field} {...props} />;
 };

@@ -1,7 +1,6 @@
-import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
-import { useForm } from "react-hook-form";
+import { useForm, FieldErrors } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { motion } from "framer-motion";
@@ -21,26 +20,34 @@ const schema = yup.object({
   message: yup.string().required("Please enter your message"),
 });
 
+interface IFormInput {
+  to_name: string;
+  from_name: string;
+  message: string;
+}
+
 export const Contact = () => {
-  const form = useRef<HTMLFormElement>(null);
   const {
     reset,
     control,
     handleSubmit,
-    formState: { errors, isValid, isSubmitting },
-  } = useForm({
+    formState: { isValid, isSubmitting },
+  } = useForm<IFormInput>({
     mode: "onSubmit",
     resolver: yupResolver(schema),
   });
 
-  const onError = (errors: any) => {
-    const firstError = Object.values(errors)[0] as any;
-    toast.error(firstError?.message);
+  const onError = (errors: FieldErrors<IFormInput>) => {
+    const firstError = Object.values(errors)[0];
+    if (firstError?.message) {
+      toast.error(firstError.message);
+    }
   };
 
-  const sendEmail = (data: any) => {
+  const sendEmail = (data: IFormInput, event?: React.BaseSyntheticEvent) => {
     if (!isValid) return;
-    if (!form.current) return;
+    const formElement = event?.target as HTMLFormElement;
+    if (!formElement) return;
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(
@@ -48,11 +55,11 @@ export const Contact = () => {
             .sendForm(
               `${process.env.NEXT_PUBLIC_EMAIL_SERVICE}`,
               `${process.env.NEXT_PUBLIC_EMAIL_TEMPLATE}`,
-              form.current as HTMLFormElement,
+              formElement,
               `${process.env.NEXT_PUBLIC_EMAIL_KEY}`,
             )
             .then(
-              (result) => {
+              () => {
                 toast.success("Send Email Successfully!");
               },
               (error) => {
@@ -94,6 +101,7 @@ export const Contact = () => {
                     src="/images/email.png"
                     alt="Email"
                     fill
+                    sizes="(max-width: 1024px) 40px, 40px"
                     className="object-cover select-none"
                   />
                 </div>
@@ -116,6 +124,7 @@ export const Contact = () => {
                       src="/images/phone.png"
                       alt="Phone"
                       fill
+                      sizes="(max-width: 1024px) 40px, 40px"
                       className="object-cover select-none"
                     />
                   </div>
@@ -138,6 +147,7 @@ export const Contact = () => {
                     src="/images/github.png"
                     alt="Github"
                     fill
+                    sizes="(max-width: 1024px) 40px, 40px"
                     className="object-cover select-none"
                   />
                 </div>
@@ -160,6 +170,7 @@ export const Contact = () => {
                     src="/images/linkedin.png"
                     alt="Linkedin"
                     fill
+                    sizes="(max-width: 1024px) 40px, 40px"
                     className="object-cover select-none"
                   />
                 </div>
@@ -186,12 +197,11 @@ export const Contact = () => {
             className="w-full lg:w-[55%] bg-linear-to-br from-brand-yellow to-brand-orangeDark rounded-xl shadow-[0_0_20px_4px_rgba(130,130,130,0.5)] p-4"
           >
             <div className="text-white text-xl font-bold text-center mb-4">
-              Let's talk
+              Let&apos;s talk
             </div>
 
             <form
               className="contact__form bg-white rounded-xl p-6 pt-8"
-              ref={form}
               autoComplete="off"
               onSubmit={handleSubmit(sendEmail, onError)}
             >

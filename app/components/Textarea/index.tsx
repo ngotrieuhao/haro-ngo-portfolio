@@ -1,16 +1,20 @@
 import React, { TextareaHTMLAttributes } from "react";
-import { useController } from "react-hook-form";
+import { useController, Control, FieldValues } from "react-hook-form";
 
-interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface TextareaProps<TFieldValues extends FieldValues = FieldValues> extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   name?: string;
-  control?: any;
+  control?: Control<TFieldValues>;
 }
 
-const Textarea = ({ name = "", control, ...props }: TextareaProps) => {
+const Textarea = <TFieldValues extends FieldValues = FieldValues>({
+  name = "",
+  control,
+  ...props
+}: TextareaProps<TFieldValues>) => {
   const { field } = useController({
     control,
-    name,
-    defaultValue: "",
+    name: name as never,
+    defaultValue: "" as never,
   });
   return <textarea id={name} {...field} {...props}></textarea>;
 };
