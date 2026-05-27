@@ -77,113 +77,125 @@ export const Contact = () => {
   };
 
   return (
-    <section className="lg:py-20 pt-10" id="contact">
-      <div className="w-full lg:max-w-7xl mx-auto mb-10 px-6 lg:px-12">
+    <section className="pt-10 lg:py-20" id="contact">
+      <div className="w-full px-6 mx-auto mb-10 lg:max-w-7xl lg:px-12">
         <Title description="Get In Touch" title="Contact" />
-        <div className="mt-10 flex flex-wrap justify-between items-stretch mx-auto gap-8">
+        <div className="flex flex-wrap items-stretch justify-between gap-8 mx-auto mt-10">
           {/* CONTACT LEFT */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="w-full lg:w-[35%] bg-linear-to-br from-brand-yellow to-brand-orangeDark rounded-xl shadow-[0_0_20px_4px_rgba(130,130,130,0.5)] p-4"
+            className="w-full lg:w-[35%] rounded-[32px] shadow-[0_18px_60px_rgba(0,0,0,0.08)] bg-linear-to-br from-brand-yellow to-brand-orangeDark p-1"
           >
-            <div className="text-white text-xl font-bold text-center mb-4">
-              Social Network
-            </div>
-
-            <div className="bg-white rounded-xl text-brand-orangeDark p-4">
-              {/* Email */}
-              <div className="mb-6 pb-6 border-b flex gap-4 items-center border-gradient-to-r">
-                <div className="w-10 h-10 overflow-hidden relative">
-                  <Image
-                    src="/images/email.png"
-                    alt="Email"
-                    fill
-                    sizes="(max-width: 1024px) 40px, 40px"
-                    className="object-cover select-none"
-                  />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-lg mb-1">Email:</h4>
-                  <a
-                    href="mailto:ngotrieuhao@gmail.com"
-                    className="underline hover:text-brand-blue hover:no-underline"
-                  >
-                    ngotrieuhao@gmail.com
-                  </a>
-                </div>
+            <div className="h-full rounded-[30px] bg-white p-6 shadow-sm">
+              <div className="mb-8">
+                <span className="inline-flex items-center rounded-full bg-brand-yellowLight/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-brand-orangeDark">
+                  Social Network
+                </span>
               </div>
 
-              {/* Phone */}
-              <div className="mb-6 pb-6 border-b flex gap-4 items-center">
-                <div>
-                  <div className="w-10 h-10 overflow-hidden relative">
-                    <Image
-                      src="/images/phone.png"
-                      alt="Phone"
-                      fill
-                      sizes="(max-width: 1024px) 40px, 40px"
-                      className="object-cover select-none"
-                    />
+              <div className="space-y-4">
+                {/* Email */}
+                <div className="flex items-start gap-4 p-4 transition border rounded-3xl border-slate-200 bg-slate-50 hover:border-brand-orangeDark">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-brand-yellow/10 text-brand-orangeDark">
+                    <div className="relative w-6 h-6">
+                      <Image
+                        src="/images/email.png"
+                        alt="Email"
+                        fill
+                        sizes="(max-width: 1024px) 24px, 24px"
+                        className="object-contain select-none"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-slate-900">Email</p>
+                    <a
+                      href="mailto:ngotrieuhao@gmail.com"
+                      className="block mt-1 text-sm text-slate-600 hover:text-brand-orangeDark"
+                    >
+                      ngotrieuhao@gmail.com
+                    </a>
                   </div>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-lg">Phone:</h4>
-                  <a
-                    href="tel:0944334052"
-                    className="hover:text-brand-blue underline hover:no-underline"
-                  >
-                    +(084) 944334052
-                  </a>
-                </div>
-              </div>
 
-              {/* Github */}
-              <div className="mb-6 pb-6 border-b flex gap-4 items-center">
-                <div className="w-10 h-10 overflow-hidden relative">
-                  <Image
-                    src="/images/github.png"
-                    alt="Github"
-                    fill
-                    sizes="(max-width: 1024px) 40px, 40px"
-                    className="object-cover select-none"
-                  />
+                {/* Phone */}
+                <div className="flex items-start gap-4 p-4 transition border rounded-3xl border-slate-200 bg-slate-50 hover:border-brand-orangeDark">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-brand-yellow/10 text-brand-orangeDark">
+                    <div className="relative w-6 h-6">
+                      <Image
+                        src="/images/phone.png"
+                        alt="Phone"
+                        fill
+                        sizes="(max-width: 1024px) 24px, 24px"
+                        className="object-contain select-none"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-slate-900">Phone</p>
+                    <a
+                      href="tel:0944334052"
+                      className="block mt-1 text-sm text-slate-600 hover:text-brand-orangeDark"
+                    >
+                      +(084) 944334052
+                    </a>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-lg">Github:</h4>
-                  <a
-                    href="https://github.com/ngotrieuhao"
-                    target="_blank"
-                    className="hover:text-brand-blue underline hover:no-underline"
-                  >
-                    ngotrieuhao
-                  </a>
-                </div>
-              </div>
 
-              {/* Linkedin */}
-              <div className="flex gap-4 items-center">
-                <div className="w-10 h-10 overflow-hidden relative">
-                  <Image
-                    src="/images/linkedin.png"
-                    alt="Linkedin"
-                    fill
-                    sizes="(max-width: 1024px) 40px, 40px"
-                    className="object-cover select-none"
-                  />
+                {/* Github */}
+                <div className="flex items-start gap-4 p-4 transition border rounded-3xl border-slate-200 bg-slate-50 hover:border-brand-orangeDark">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-brand-yellow/10 text-brand-orangeDark">
+                    <div className="relative w-6 h-6">
+                      <Image
+                        src="/images/github.png"
+                        alt="Github"
+                        fill
+                        sizes="(max-width: 1024px) 24px, 24px"
+                        className="object-contain select-none"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-slate-900">Github</p>
+                    <a
+                      href="https://github.com/ngotrieuhao"
+                      target="_blank"
+                      className="block mt-1 text-sm text-slate-600 hover:text-brand-orangeDark"
+                    >
+                      ngotrieuhao
+                    </a>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-lg">Linkedin:</h4>
-                  <a
-                    href="https://www.linkedin.com/in/haro-ngo/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-brand-blue underline hover:no-underline"
-                  >
-                    Hao Ngo
-                  </a>
+
+                {/* Linkedin */}
+                <div className="flex items-start gap-4 p-4 transition border rounded-3xl border-slate-200 bg-slate-50 hover:border-brand-orangeDark">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-brand-yellow/10 text-brand-orangeDark">
+                    <div className="relative w-6 h-6">
+                      <Image
+                        src="/images/linkedin.png"
+                        alt="Linkedin"
+                        fill
+                        sizes="(max-width: 1024px) 24px, 24px"
+                        className="object-contain select-none"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-slate-900">
+                      Linkedin
+                    </p>
+                    <a
+                      href="https://www.linkedin.com/in/haro-ngo/"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="block mt-1 text-sm text-slate-600 hover:text-brand-orangeDark"
+                    >
+                      Hao Ngo
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -194,69 +206,73 @@ export const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="w-full lg:w-[55%] bg-linear-to-br from-brand-yellow to-brand-orangeDark rounded-xl shadow-[0_0_20px_4px_rgba(130,130,130,0.5)] p-4"
+            className="w-full lg:w-[55%] rounded-[32px] shadow-[0_18px_60px_rgba(0,0,0,0.08)] bg-linear-to-br from-brand-yellow to-brand-orangeDark p-1"
           >
-            <div className="text-white text-xl font-bold text-center mb-4">
-              Let&apos;s talk
+            <div className="h-full rounded-[30px] bg-white p-6 shadow-sm">
+              <div className="mb-8">
+                <span className="inline-flex items-center rounded-full bg-brand-yellowLight/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-brand-orangeDark">
+                  Let&apos;s talk
+                </span>
+              </div>
+
+              <form
+                className="space-y-6"
+                autoComplete="off"
+                onSubmit={handleSubmit(sendEmail, onError)}
+              >
+                {/* Name */}
+                <div className="relative form-group">
+                  <Input
+                    name="to_name"
+                    placeholder=" "
+                    control={control}
+                    className="input_contact"
+                  />
+                  <Label htmlFor="name">Name</Label>
+                </div>
+
+                {/* Email */}
+                <div className="relative form-group">
+                  <Input
+                    name="from_name"
+                    type="email"
+                    placeholder=" "
+                    control={control}
+                    className="input_contact"
+                  />
+                  <Label htmlFor="email">Email</Label>
+                </div>
+
+                {/* Message */}
+                <div className="relative form-group">
+                  <Textarea
+                    name="message"
+                    rows={4}
+                    placeholder=" "
+                    control={control}
+                    className="input_message"
+                  />
+                  <Label
+                    htmlFor="message"
+                    className="select-none form__label--message"
+                  >
+                    Message
+                  </Label>
+                </div>
+
+                {/* Button */}
+                <div>
+                  <Button
+                    type="submit"
+                    isLoading={isSubmitting}
+                    disabled={isSubmitting}
+                    className="flex items-center justify-center w-full h-12 text-lg text-white uppercase transition rounded-3xl bg-brand-orangeDark hover:bg-brand-orange"
+                  >
+                    Send message
+                  </Button>
+                </div>
+              </form>
             </div>
-
-            <form
-              className="contact__form bg-white rounded-xl p-6 pt-8"
-              autoComplete="off"
-              onSubmit={handleSubmit(sendEmail, onError)}
-            >
-              {/* Name */}
-              <div className="form-group relative mb-6">
-                <Input
-                  name="to_name"
-                  placeholder=" "
-                  control={control}
-                  className="input_contact"
-                />
-                <Label htmlFor="name">Name</Label>
-              </div>
-
-              {/* Email */}
-              <div className="form-group relative mb-6">
-                <Input
-                  name="from_name"
-                  type="email"
-                  placeholder=" "
-                  control={control}
-                  className="input_contact"
-                />
-                <Label htmlFor="email">Email</Label>
-              </div>
-
-              {/* Message */}
-              <div className="form-group relative mb-6">
-                <Textarea
-                  name="message"
-                  rows={3}
-                  placeholder=" "
-                  control={control}
-                  className="input_message"
-                />
-                <Label
-                  htmlFor="message"
-                  className="form__label--message select-none"
-                >
-                  Message
-                </Label>
-              </div>
-
-              {/* Button */}
-              <div className="text-center">
-                <Button
-                  type="submit"
-                  isLoading={isSubmitting}
-                  disabled={isSubmitting}
-                  className="btn_send--contact mx-auto flex justify-center items-center w-1/2 h-12 select-none cursor-pointer text-white bg-brand-orangeDark rounded-lg uppercase text-lg hover:bg-gray-800 transition"
-                >
-                  Send
-                </Button>
-              </div>
-            </form>
           </motion.div>
         </div>
       </div>
