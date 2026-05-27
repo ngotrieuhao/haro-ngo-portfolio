@@ -266,7 +266,7 @@ export const Contact = () => {
                     type="submit"
                     isLoading={isSubmitting}
                     disabled={isSubmitting}
-                    className="flex items-center justify-center w-full h-12 text-lg text-white uppercase transition rounded-3xl bg-brand-orangeDark hover:bg-brand-orange"
+                    className="flex items-center justify-center w-full h-12 text-lg text-white uppercase transition cursor-pointer rounded-3xl bg-brand-orangeDark hover:bg-brand-orange"
                   >
                     Send message
                   </Button>
